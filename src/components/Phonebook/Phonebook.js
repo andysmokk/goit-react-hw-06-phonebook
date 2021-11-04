@@ -4,10 +4,10 @@ import s from './Phonebook.module.css';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
-import useLocalStarage from '../../hooks/useLocalStarage';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 export default function Phonebook() {
-  const [contacts, setContacts] = useLocalStarage('contacts', defaultContacts);
+  const [contacts, setContacts] = useLocalStorage('contacts', defaultContacts);
   const [filter, setFilter] = useState('');
 
   const deleteContact = contactId => {
