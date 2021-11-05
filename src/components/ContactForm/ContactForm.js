@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as actions from '../../redux/actions';
+import * as actions from '../../redux/phonebook-actions';
 import shortid from 'shortid';
 import s from './ContactForm.module.css';
 
 function ContactForm({ onSubmit, contacts }) {
-  console.log(contacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -98,19 +97,13 @@ ContactForm.propTypes = {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     contacts: state.contacts,
-    // contacts: {
-    //   items: state.contacts.items,
-    //   filter: state.contacts.filter,
-    // },
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    // onDeleteContact: contactId => dispatch(actions.deleteContact(contactId)),
     onSubmit: contact => dispatch(actions.submitContacts(contact)),
   };
 };
