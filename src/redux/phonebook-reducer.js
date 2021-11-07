@@ -1,25 +1,42 @@
 // import { combineReducers } from 'redux';
-import { CHANGE_FILTER, DELETE, SUBMIT } from './phonebook-types';
+import { createReducer } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+import {
+  deleteContact,
+  submitContacts,
+  changeFilter,
+} from './phonebook-actions';
 
-export const contactsReducer = (state = [], { type, payload }) => {
-  switch (type) {
-    case SUBMIT:
-      return [...state, payload];
+export const contactsReducer = createReducer([], {
+  [submitContacts]: (state, action) => [...state, action.payload],
+  [deleteContact]: (state, action) =>
+    state.filter(({ id }) => id !== action.payload),
+});
 
-    case DELETE:
-      return state.filter(({ id }) => id !== payload);
+export const contactsFilter = createReducer('', {
+  [changeFilter]: (_, action) => action.payload,
+});
 
-    default:
-      return state;
-  }
-};
+// export const contactsFilter = (state = '', { type, payload }) => {
+//   switch (type) {
+//     case changeFilter:
+//       return payload;
 
-export const contactsFilter = (state = '', { type, payload }) => {
-  switch (type) {
-    case CHANGE_FILTER:
-      return payload;
+//     default:
+//       return state;
+//   }
+// };
 
-    default:
-      return state;
-  }
-};
+// export const contactsReducer = (state = [], { type, payload }) => {
+//   console.log(type);
+//   switch (type) {
+//     case submitContacts:
+//       return [...state, payload];
+
+//     case deleteContact:
+//       return state.filter(({ id }) => id !== payload);
+
+//     default:
+//       return state;
+//   }
+// };
