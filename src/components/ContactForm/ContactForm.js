@@ -1,13 +1,18 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import { submitContacts } from '../../redux/phonebook-actions';
 import shortid from 'shortid';
 import s from './ContactForm.module.css';
 
-function ContactForm({ onSubmit, contacts }) {
+export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const contacts = useSelector(({ contacts }) => contacts);
+  const dispatch = useDispatch();
+
+  const onSubmit = contact => dispatch(submitContacts(contact));
 
   const onSubmitForm = e => {
     e.preventDefault();
@@ -91,21 +96,21 @@ function ContactForm({ onSubmit, contacts }) {
   );
 }
 
-ContactForm.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.object),
-  onSubmit: PropTypes.func.isRequired,
-};
+// ContactForm.propTypes = {
+//   contacts: PropTypes.arrayOf(PropTypes.object),
+//   onSubmit: PropTypes.func,
+// };
 
-const mapStateToProps = state => {
-  return {
-    contacts: state.contacts,
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     contacts: state.contacts,
+//   };
+// };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSubmit: contact => dispatch(submitContacts(contact)),
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onSubmit: contact => dispatch(submitContacts(contact)),
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+// export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
