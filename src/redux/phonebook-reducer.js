@@ -5,6 +5,7 @@ import {
   submitContacts,
   changeFilter,
 } from './phonebook-actions';
+import logger from 'redux-logger';
 
 export const contactsReducer = createReducer([], {
   [submitContacts]: (state, action) => [...state, action.payload],
