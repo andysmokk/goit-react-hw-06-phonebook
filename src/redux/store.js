@@ -1,4 +1,3 @@
-// import { createStore, combineReducers } from 'redux';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -11,7 +10,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// import { composeWithDevTools } from 'redux-devtools-extension';
 import { contactsReducer, filterReducer } from './phonebook-reducer';
 
 const contactsPersistConfig = {
@@ -26,13 +24,6 @@ const rootReducer = combineReducers({
 });
 
 const persistedReducer = persistReducer(contactsPersistConfig, rootReducer);
-// const rootReducer = combineReducers({
-//   contacts: contactsReducer,
-//   filter: contactsFilter,
-// });
-
-// const store = createStore(rootReducer, composeWithDevTools());
-// console.log(process.env.NODE_ENV);
 
 const store = configureStore({
   reducer: persistedReducer,

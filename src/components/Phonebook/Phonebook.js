@@ -1,12 +1,7 @@
-// import { useState } from 'react';
-// import { connect } from 'react-redux';
-// import * as actions from '../../redux/actions';
-// import defaultContacts from './defaultContacts.json';
 import s from './Phonebook.module.css';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
-// import useLocalStorage from '../../hooks/useLocalStorage';
 
 function Phonebook() {
   return (

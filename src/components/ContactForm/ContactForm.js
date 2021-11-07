@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { submitContacts } from '../../redux/phonebook-actions';
 import shortid from 'shortid';
@@ -96,22 +95,3 @@ export default function ContactForm() {
     </form>
   );
 }
-
-// ContactForm.propTypes = {
-//   contacts: PropTypes.arrayOf(PropTypes.object),
-//   onSubmit: PropTypes.func,
-// };
-
-// const mapStateToProps = state => {
-//   return {
-//     contacts: state.contacts,
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     onSubmit: contact => dispatch(submitContacts(contact)),
-//   };
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
