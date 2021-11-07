@@ -2,19 +2,18 @@
 // import { connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/phonebook-actions';
+import { getFilteredContacts } from '../../redux/phonebook-selectors';
 import s from './ContactList.module.css';
 
-const getFilteredContacts = (contacts, filter) => {
-  const normalizedFilter = filter.toLocaleLowerCase();
-  return contacts.filter(contact =>
-    contact.name.toLocaleLowerCase().includes(normalizedFilter),
-  );
-};
+// const getFilteredContacts = (contacts, filter) => {
+//   const normalizedFilter = filter.toLocaleLowerCase();
+//   return contacts.filter(contact =>
+//     contact.name.toLocaleLowerCase().includes(normalizedFilter),
+//   );
+// };
 
 export default function ContactList() {
-  const contacts = useSelector(({ contacts, filter }) =>
-    getFilteredContacts(contacts, filter),
-  );
+  const contacts = useSelector(getFilteredContacts);
   const dispatch = useDispatch();
 
   const onDeleteContact = id => dispatch(deleteContact(id));

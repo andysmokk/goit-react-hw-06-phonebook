@@ -3,13 +3,14 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { submitContacts } from '../../redux/phonebook-actions';
 import shortid from 'shortid';
+import { getContacts } from '../../redux/phonebook-selectors';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(({ contacts }) => contacts);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const onSubmit = contact => dispatch(submitContacts(contact));
