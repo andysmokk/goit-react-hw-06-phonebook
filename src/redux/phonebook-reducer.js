@@ -1,11 +1,11 @@
 // import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
+
 import {
   deleteContact,
   submitContacts,
   changeFilter,
 } from './phonebook-actions';
-import logger from 'redux-logger';
 
 export const contactsReducer = createReducer([], {
   [submitContacts]: (state, action) => [...state, action.payload],
@@ -13,7 +13,7 @@ export const contactsReducer = createReducer([], {
     state.filter(({ id }) => id !== action.payload),
 });
 
-export const contactsFilter = createReducer('', {
+export const filterReducer = createReducer('', {
   [changeFilter]: (_, action) => action.payload,
 });
 
